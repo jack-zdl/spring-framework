@@ -12,4 +12,5 @@ public interface ConfigConstant {
     String JDBC_URL = "smart.framework.jdbc.url";
     String JDBC_USERNAME = "smart.framework.jdbc.username";
     String JDBC_PASSWORD = "smart.framework.jdbc.password";
+    String APP_BASE_PACKAGE = "smart.framework.app.base_package";
 }
