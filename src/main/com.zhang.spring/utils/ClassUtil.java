@@ -125,7 +125,6 @@ public class ClassUtil {
     private static void doAddClass(Set<Class<?>> classSet,String className){
         Class<?> cla = loadClass(className,false);
         classSet.add(cla);
-
     }
 
 }
