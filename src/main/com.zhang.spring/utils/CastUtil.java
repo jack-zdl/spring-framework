@@ -1,6 +1,7 @@
 package utils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 /**
  * 功能说明: 转型操作工具类<br>
@@ -23,6 +24,44 @@ public final class CastUtil {
         return obj != null ? String.valueOf(obj) : defaultValue;
     }
 
+
+    public static double castDouble(Object obj){
+        return CastUtil.castDouble(obj,0);
+    }
+
+    public static double castDouble(Object obj, double defaultValue){
+        double doubleValue = defaultValue;
+        if(obj !=  null){
+            String strValue = castString(obj);
+            if(StringUtils.isNoneEmpty(strValue)){
+                try {
+                    doubleValue =Double.parseDouble(strValue);
+                }catch (NumberFormatException e){
+                    doubleValue = defaultValue;
+                }
+            }
+        }
+        return defaultValue;
+    }
+
+    public static long castLong(Object obj){
+        return CastUtil.castLong(obj,0);
+    }
+
+    public static long castLong(Object obj,long defaultValue){
+        long longValue = defaultValue;
+        if(obj != null){
+            String strValue = castString(obj);
+            if(StringUtils.isNoneEmpty(strValue)){
+                try {
+                    longValue = Long.parseLong(strValue);
+                }catch (NumberFormatException e){
+                    longValue = defaultValue;
+                }
+            }
+        }
+        return longValue;
+    }
     /**
      *
      * @param object

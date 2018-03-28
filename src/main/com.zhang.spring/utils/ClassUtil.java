@@ -21,7 +21,7 @@ import java.util.jar.JarFile;
  * 开发时间: 2018/3/22 15:52<br>
  */
 
-public class ClassUtil {
+public  class ClassUtil {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ClassUtil.class);
 
     /**
@@ -104,17 +104,17 @@ public class ClassUtil {
             String fileName = file.getName();
             if(file.isFile()){
                 String className = fileName.substring(0,fileName.lastIndexOf("."));
-                if(StringUtils.isNotEmpty(packageName)){
+                if(StringUtil.isNotEmpty(packageName)){
                     className = packageName+"."+className;
                 }
                 doAddClass(classSet,className);
             }else {
                 String subPackagePath = fileName;
-                if(StringUtils.isNotEmpty(packagePath)){
+                if(StringUtil.isNotEmpty(packagePath)){
                     subPackagePath = packagePath + "/" + subPackagePath;
                 }
                 String subPackageName = fileName;
-                if(StringUtils.isNotEmpty(packageName)){
+                if(StringUtil.isNotEmpty(packageName)){
                     subPackageName  = packageName + "." + subPackageName;
                 }
                 addClass(classSet,subPackagePath,subPackageName);

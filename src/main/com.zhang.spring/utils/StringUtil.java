@@ -7,15 +7,19 @@ package utils;
  * 开发时间: 2018/3/22 15:43<br>
  */
 
-public class StringUtils {
+public class StringUtil {
     public static boolean isEmpty(String str){
         if(str != null){
             str = str.trim();
         }
-        return StringUtils.isEmpty(str);
+        return StringUtil.isEmpty(str);
     }
 
     public static boolean isNotEmpty(String string){
         return !isEmpty(string);
+    }
+
+    public static String[] splitString(String s,String param){
+        return s.split(param);
     }
 }
