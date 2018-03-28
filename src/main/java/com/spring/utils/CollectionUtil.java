@@ -1,5 +1,6 @@
 package com.spring.utils;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 
 import java.util.Collection;
@@ -20,7 +21,7 @@ public final class CollectionUtil {
      * @return
      */
     public static boolean isEmpty(Collection<?> collection){
-        return isEmpty(collection);
+        return CollectionUtils.isEmpty(collection);
     }
 
     /**
