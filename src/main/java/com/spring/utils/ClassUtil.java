@@ -14,7 +14,8 @@ import java.util.jar.JarFile;
 
 
 /**
- * 功能说明: 自制的类加载器，加载一些某注解的类，或实现某接口的类<br>
+ * 功能说明: 类操作工具类<br>
+ *          来提供与类相关的方法，比如获取类的加载器，加载类，获取指定包名下的所有类
  * 系统版本: 2.0 <br>
  * 开发人员: zhangdl <br>
  * 开发时间: 2018/3/22 15:52<br>
@@ -52,6 +53,8 @@ public final class ClassUtil {
 
     /**
      * 加载类
+     * 为了提高家在类的性能，可以将isInitialized参数设置成false。不用初始化时就加载，
+     * 而是懒加载形式。
      */
     public static Class<?> loadClass(String className) {
         return loadClass(className, false);

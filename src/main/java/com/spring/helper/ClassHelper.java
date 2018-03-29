@@ -9,6 +9,8 @@ import java.util.Set;
 
 /**
  * 功能说明: 在这个类中增加获取应用包的所有Bean类的方法<br>
+ *          来获取应用包下的所有类，所有service类，应用宝下的ClassHelper助手类 <br>
+ *              我们使用ClassHelper类来封装ClassUtil,并提供一些助手方法直接获取我们想要的类集合。
  * 系统版本: 2.0 <br>
  * 开发人员: zhangdl <br>
  * 开发时间: 2018/3/22 21:01<br>
