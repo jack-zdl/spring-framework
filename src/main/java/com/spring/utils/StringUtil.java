@@ -1,5 +1,7 @@
 package com.spring.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * 功能说明: <br>
  * 系统版本: 2.0 <br>
@@ -12,7 +14,7 @@ public class StringUtil {
         if(str != null){
             str = str.trim();
         }
-        return StringUtil.isEmpty(str);
+        return StringUtils.isEmpty(str);
     }
 
     public static boolean isNotEmpty(String string){
