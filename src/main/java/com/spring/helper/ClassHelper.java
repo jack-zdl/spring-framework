@@ -69,8 +69,8 @@ public final class ClassHelper {
      */
     public static Set<Class<?>> getBeanClassSet(){
        Set<Class<?>> beanClassSet = new HashSet<Class<?>>();
+       beanClassSet.addAll(getControllerClassSet());
        beanClassSet.addAll(getServiceClassSet());
-        beanClassSet.addAll(getControllerClassSet());
         return beanClassSet;
     }
 }

@@ -21,12 +21,10 @@ import java.util.List;
 @Controller
 public class CustomerController {
 
-    @Inject
-    private CustomerService customerService;
 
-    @Action("get: /view")
+
+    @Action("get:/view")
     public View index(){
-        customerService.createCustomer(null);
         List list = new ArrayList();
         System.out.println("---------------------------");
         list.add(1);
@@ -34,9 +32,8 @@ public class CustomerController {
         return new View("index.jsp").addModel("customerList",list);
     }
 
-    @Action("get: /data")
+    @Action("get:/data")
     public Data data(){
-        customerService.createCustomer(null);
         List list = new ArrayList();
         System.out.println("----22222222222222222222-----------------------");
         list.add(1);

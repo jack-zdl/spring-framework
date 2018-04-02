@@ -13,6 +13,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +30,7 @@ import java.util.Map;
  * 开发人员: zhangdl <br>
  * 开发时间: 2018/3/28 10:23<br>
  */
+@WebServlet(urlPatterns = "/*", loadOnStartup = 0)
 public class DispathcharServlet extends HttpServlet{
 
     @Override
@@ -61,15 +63,15 @@ public class DispathcharServlet extends HttpServlet{
             Class<?> controllerClass = handler.getControllerClass();
             Object controllerBean = BeanHelper.getBean(controllerClass);
 
+            // 创建请求参数对象,并获得参数
             Map<String,Object> paramMap = new HashMap<String,Object>();
-
             Enumeration<String> paramNames = request.getParameterNames();
-
             while (paramNames.hasMoreElements()){
                 String paramName = paramNames.nextElement();
                 String paramValue = request.getParameter(paramName);
                 paramMap.put(paramName,paramValue);
             }
+
             String body = CodeUtil.decodeURL(StreamUtil.getString(request.getInputStream()));
             if(StringUtil.isNotEmpty(body)){
                 String[] params = StringUtil.splitString(body,"&");
