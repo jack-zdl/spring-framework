@@ -55,9 +55,10 @@ public final class ClassUtil {
      * 加载类
      * 为了提高家在类的性能，可以将isInitialized参数设置成false。不用初始化时就加载，
      * 而是懒加载形式。
+     * 是否执行静态代码
      */
     public static Class<?> loadClass(String className) {
-        return loadClass(className, false);
+        return loadClass(className, true);
     }
     /**
      * 获取指定包的所有类

@@ -22,9 +22,9 @@ import java.util.List;
 public class CustomerController {
 
 
-
     @Action("get:/view")
     public View index(){
+//        customerService.createCustomer(null);
         List list = new ArrayList();
         System.out.println("---------------------------");
         list.add(1);
@@ -33,15 +33,13 @@ public class CustomerController {
     }
 
     @Action("get:/data")
-    public Data data(){
+    public Data data(String id){
+//        customerService.createCustomer(null);
         List list = new ArrayList();
         System.out.println("----22222222222222222222-----------------------");
         list.add(1);
         list.add(2);
         return new Data(list);
     }
-
-
-
 
 }

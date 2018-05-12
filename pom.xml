@@ -27,6 +27,7 @@
       <groupId>javax.servlet.jsp</groupId>
       <artifactId>jsp-api</artifactId>
       <version>2.2</version>
+      <scope>provided</scope>
     </dependency>
 
     <!-- jstl jsp的标签库-->
@@ -34,6 +35,7 @@
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
+      <scope>runtime</scope>
     </dependency>
 
     <!--  json 序列化，将contrlloer返回的数据序列化json返回前端 -->
@@ -90,6 +92,8 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+
   <build>
     <finalName>spring-framework</finalName>
     <plugins>

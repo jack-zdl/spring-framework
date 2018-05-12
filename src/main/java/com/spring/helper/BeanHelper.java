@@ -3,6 +3,7 @@ package com.spring.helper;
 import com.spring.utils.ReflectionUtil;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public final class BeanHelper {
     /**
      * 定义Bean的映射（用于存放Bean类与Bean实例的映射关系）
      */
-    private static final Map<Class<?>,Object> BEAN_MAP = new HashMap<Class<?>,Object>();
+    private static final Map<String,Object> BEAN_MAP = new HashMap<String,Object>();
 
     static {
         //获取所有的类
@@ -28,14 +29,15 @@ public final class BeanHelper {
             //根据类名来获得实例
             Object obj = ReflectionUtil.newInstance(beanClass);
             //将类名和实例放入map中，随时可以获取
-            BEAN_MAP.put(beanClass,obj);
+            BEAN_MAP.put(beanClass.getName(),obj);
         }
+        System.out.println("----------"+BEAN_MAP);
     }
 
     /**
      * 获得Bean映射
      */
-    public static Map<Class<?>, Object> getBeanMap(){
+    public static Map<String, Object> getBeanMap(){
         return BEAN_MAP;
     }
 
@@ -45,10 +47,10 @@ public final class BeanHelper {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static <T> T getBean(Class<T> cls){
-        if(!BEAN_MAP.containsKey(cls)){
-            throw new RuntimeException("can not get bean by class: "+cls);
+    public static <T> T getBean(String name){
+        if(!BEAN_MAP.containsKey(name)){
+            throw new RuntimeException("can not get bean by class: "+name);
         }
-        return (T)BEAN_MAP.get(cls);
+        return (T)BEAN_MAP.get(name);
     }
 }

@@ -22,6 +22,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -35,33 +36,35 @@ public class DispathcharServlet extends HttpServlet{
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException{
-
+        //初始化框架
         HelperLoader.init();
 
         ServletContext servletContext = servletConfig.getServletContext();
-
+        //注册JSP的Servlet
         ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
-
         jspServlet.addMapping(ConfigHelper.getAppJspPath() + ".*");
-
+        //注册处理静态资源的Servlet
         ServletRegistration defaultServlet  = servletContext.getServletRegistration("default");
-
         defaultServlet.addMapping(ConfigHelper.getAppAssetPath()+"*");
 
     }
 
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
-        String requestMethod = request.getMethod().toLowerCase();
+        //获取请求方法
+        String requestMethod = request.getMethod().toLowerCase(Locale.ENGLISH);
 
         String requestPath = request.getPathInfo();
-
+        //调用HandlerMapping获得
+        //该Handler配置的所有相关的对象（包括Handler对象以及Handler对象对应的拦截器），最后以HandlerExecutionChain
+        //对象的形式返回；
+        //获取处理处理这个请求的handler
         Handler handler = ControllerHelper.getHandler(requestMethod,requestPath);
 
         if(handler != null){
-
+            //
             Class<?> controllerClass = handler.getControllerClass();
-            Object controllerBean = BeanHelper.getBean(controllerClass);
+            Object controllerBean = BeanHelper.getBean(controllerClass.getName());
 
             // 创建请求参数对象,并获得参数
             Map<String,Object> paramMap = new HashMap<String,Object>();
@@ -87,6 +90,7 @@ public class DispathcharServlet extends HttpServlet{
                 }
             }
             Param param = new Param(paramMap);
+            /**--------------------传递参数-----------------------------------**/
             Method actionMethod = handler.getActionMethod();
             Object result = ReflectionUtil.invokeMethod(controllerBean,actionMethod,param);
             if(result instanceof View){
