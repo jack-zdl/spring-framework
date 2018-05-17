@@ -53,4 +53,14 @@ public final class BeanHelper {
         }
         return (T)BEAN_MAP.get(name);
     }
+
+    /**
+     * aop 专用
+     * 设置bean的实例
+     */
+    public static void  setBean(Class<?> cls,Object object){
+        // 错误
+        String  a = "";
+        BEAN_MAP.put(a,object);
+    }
 }
