@@ -64,7 +64,7 @@ public class DispathcharServlet extends HttpServlet{
         if(handler != null){
             //
             Class<?> controllerClass = handler.getControllerClass();
-            Object controllerBean = BeanHelper.getBean(controllerClass.getName());
+            Object controllerBean = BeanHelper.getBean(controllerClass);
 
             // 创建请求参数对象,并获得参数
             Map<String,Object> paramMap = new HashMap<String,Object>();

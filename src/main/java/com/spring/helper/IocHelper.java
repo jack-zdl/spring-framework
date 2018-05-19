@@ -19,19 +19,12 @@ public final class IocHelper {
 
     static {
         // 获取所有的bean类与bean实例之间映射关系
-        Map<String, Object> beanMap = BeanHelper.getBeanMap();
+        Map<Class<?>, Object> beanMap = BeanHelper.getBeanMap();
         if(CollectionUtil.isNotEmpty(beanMap)){
             // 遍历Bean Map
-            for(Map.Entry<String,Object>beanEntry:beanMap.entrySet()){
+            for(Map.Entry<Class<?>,Object>beanEntry:beanMap.entrySet()){
                 // 从beanMap中获取bean类与bean实例
-                Class<?> beanClass = null;
-
-                String className = beanEntry.getKey();
-                try {
-                    beanClass = Class.forName(className);
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                Class<?> beanClass = beanEntry.getKey();
                 Object beanInstance = beanEntry.getValue();
                 // 获取Bean类定义的所有成员变量
                 Field[] beanFields = beanClass.getDeclaredFields();
