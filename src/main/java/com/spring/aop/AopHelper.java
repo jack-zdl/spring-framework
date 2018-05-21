@@ -1,8 +1,11 @@
 package com.spring.aop;
 
 import com.spring.annotation.Aspect;
+import com.spring.annotation.Service;
+import com.spring.annotation.Transaction;
 import com.spring.helper.BeanHelper;
 import com.spring.helper.ClassHelper;
+import com.spring.utils.ClassUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -74,4 +77,23 @@ public final class AopHelper {
         }
         return targetMap;
     }
+
+    private static void addAspectProxy(Map<Class<?>,Set<Class<?>>> proxyMap) throws Exception {
+        Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
+        for (Class<?> proxyClass : proxyClassSet){
+            if (proxyClass.isAnnotationPresent(Aspect.class)){
+                Aspect aspect = proxyClass.getAnnotation(Aspect.class);
+                Set<Class<?>> targetClassSet = createTargetClassSet(aspect);
+                proxyMap.put(proxyClass,targetClassSet);
+            }
+        }
+    }
+
+    private static void addTransactionProxy(Map<Class<?>,Set<Class<?>>> proxyMap){
+        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
+        proxyMap.put(Transaction.class,serviceClassSet);
+    }
+
+
+
 }

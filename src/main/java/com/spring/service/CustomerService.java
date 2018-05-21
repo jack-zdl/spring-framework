@@ -1,8 +1,13 @@
 package com.spring.service;
 
 import com.spring.annotation.Service;
+import com.spring.annotation.Transaction;
+import com.spring.bean.Customer;
+import com.spring.transaction.DatabaseHelper;
 import org.omg.CORBA.PUBLIC_MEMBER;
+import org.omg.CORBA.portable.ValueOutputStream;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,7 +19,9 @@ import java.util.Map;
 @Service
 public class CustomerService {
 
-    public boolean createCustomer(Map<String,Object> filelMap){
-        return false;
+
+    @Transaction
+    public void createCustomer(Map<String,Object> fieldMap){
+         DatabaseHelper.insertEntity();
     }
 }
