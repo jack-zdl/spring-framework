@@ -2,13 +2,8 @@ package com.spring.controller;
 
 
 import com.spring.annotation.Action;
-import com.spring.annotation.Inject;
 import com.spring.annotation.Controller;
-import com.spring.bean.Data;
-import com.spring.bean.Param;
 import com.spring.bean.View;
-import com.spring.service.CustomerService;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +17,16 @@ import java.util.List;
 public class CustomerController {
 
 
+   private int testId;
+
+    public int getTestId() {
+        return testId;
+    }
+
+    public void setTestId(int testId) {
+        this.testId = testId;
+    }
+
     @Action("get:/view")
     public View index(){
 //        customerService.createCustomer(null);
@@ -31,15 +36,15 @@ public class CustomerController {
         list.add(2);
         return new View("index.jsp").addModel("customerList",list);
     }
-
-    @Action("get:/data")
-    public Data data(String id){
-//        customerService.createCustomer(null);
-        List list = new ArrayList();
-        System.out.println("----22222222222222222222-----------------------");
-        list.add(1);
-        list.add(2);
-        return new Data(list);
-    }
+//
+//    @Action("get:/data")
+//    public Data data(String id){
+////        customerService.createCustomer(null);
+//        List list = new ArrayList();
+//        System.out.println("----22222222222222222222-----------------------");
+//        list.add(1);
+//        list.add(2);
+//        return new Data(list);
+//    }
 
 }

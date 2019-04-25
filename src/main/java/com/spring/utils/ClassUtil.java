@@ -43,7 +43,8 @@ public final class ClassUtil {
     public static Class<?> loadClass(String className,boolean isInitialized){
         Class<?> cls;
         try {
-            cls = Class.forName(className,isInitialized,getClassLoader());
+            // Class.forName("Foo")  ==  Class.forName("Foo", true, this.getClass().getClassLoader())
+            cls = Class.forName(className,isInitialized, ClassUtil.getClassLoader()); //isInitialized,getClassLoader()
         }catch (ClassNotFoundException e){
             LOGGER.error("load class failure",e);
             throw new RuntimeException(e);

@@ -19,6 +19,15 @@ import java.util.Map;
 @Service
 public class CustomerService {
 
+   private int testId;
+
+    public int getTestId() {
+        return testId;
+    }
+
+    public void setTestId(int testId) {
+        this.testId = testId;
+    }
 
     @Transaction
     public void createCustomer(Map<String,Object> fieldMap){
