@@ -29,19 +29,6 @@ public final class BeanHelper {
         Set<Class<?>> beanClassSet = ClassHelper.getBeanClassSet();
         for (Class<?> beanClass : beanClassSet){
             //根据类名来获得实例
-            try {
-                Class<?>   cls = Class.forName("com.spring.controller.CustomerController");
-                Object p = cls.newInstance();//通过Class获得Person实例
-                Object a = CustomerController.class.newInstance();
-                System.out.println(p);
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }  catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
             Object obj = ReflectionUtil.newInstance(beanClass);
             //将类名和实例放入map中，随时可以获取
             BEAN_MAP.put(beanClass,obj);

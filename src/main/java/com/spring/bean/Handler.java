@@ -15,8 +15,7 @@ public class Handler {
 
     private Method actionMethod;
 
-    public
-    Handler(Class<?> controllerClass, Method actionMethod){
+    public Handler(Class<?> controllerClass, Method actionMethod){
         this.controllerClass = controllerClass;
         this.actionMethod  =actionMethod;
     }

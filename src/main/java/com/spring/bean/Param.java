@@ -19,8 +19,7 @@ public class Param {
      * 根据参数名获得long类型参数值
      * @param paramMap
      */
-    public
-    Param(Map<String,Object> paramMap){
+    public Param(Map<String,Object> paramMap){
         this.paramMap = paramMap;
     }
 
@@ -33,7 +32,11 @@ public class Param {
         return CastUtil.castLong(paramMap.get(name));
     }
 
-    public Map<String,Object> getMap(){
-        return paramMap;
-    }
+//    public Map<String,Object> getMap(){
+//        return paramMap;
+//    }
+
+
+
+
 }

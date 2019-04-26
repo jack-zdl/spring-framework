@@ -103,7 +103,7 @@ public final class ClassUtil {
     }
 
     public static void addClass(Set<Class<?>> classSet,String packagePath,String packageName){
-
+        // 获取此包的目录 建立一个File       就获取包下的所有文件 包括目录      自定义过滤规则 如果可以循环(包含子目录) 或则是以.class结尾的文件(编译好的java类文件)
         File[] files = new File(packagePath).listFiles( new FileFilter() {
             @Override
             public boolean accept(File file) {

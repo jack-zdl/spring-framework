@@ -90,9 +90,10 @@ public class DispathcharServlet extends HttpServlet{
                 }
             }
             Param param = new Param(paramMap);
+
             /**--------------------传递参数-----------------------------------**/
             Method actionMethod = handler.getActionMethod();
-            Object result = ReflectionUtil.invokeMethod(controllerBean,actionMethod,param);
+            Object result = ReflectionUtil.invokeMethod(controllerBean,actionMethod); //param
             if(result instanceof View){
                 View view = (View) result;
                 String path = view.getPath();

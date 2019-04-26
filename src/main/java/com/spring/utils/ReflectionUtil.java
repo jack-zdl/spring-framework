@@ -43,7 +43,7 @@ public final class ReflectionUtil {
         Object result;
         try {
             method.setAccessible(true);
-            result = method.invoke(obj);
+            result = method.invoke(obj,args);
         }catch (Exception e){
             LOGGER.error("invoke method failure",e);
             throw new RuntimeException(e);

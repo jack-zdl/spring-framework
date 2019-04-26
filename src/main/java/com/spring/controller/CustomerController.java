@@ -3,7 +3,10 @@ package com.spring.controller;
 
 import com.spring.annotation.Action;
 import com.spring.annotation.Controller;
+import com.spring.annotation.Inject;
 import com.spring.bean.View;
+import com.spring.service.CustomerService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,20 +19,12 @@ import java.util.List;
 @Controller
 public class CustomerController {
 
-
-   private int testId;
-
-    public int getTestId() {
-        return testId;
-    }
-
-    public void setTestId(int testId) {
-        this.testId = testId;
-    }
+    @Inject
+    private CustomerService customerService;
 
     @Action("get:/view")
     public View index(){
-//        customerService.createCustomer(null);
+       customerService.createCustomer(null);
         List list = new ArrayList();
         System.out.println("---------------------------");
         list.add(1);
